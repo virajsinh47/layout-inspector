@@ -1,0 +1,85 @@
+{
+  "name": "layout-inspector",
+  "version": "1.0.0",
+  "description": "Layout Inspector by Virajsinh Zala — visual DOM element picker for React and the web",
+  "author": "Virajsinh Zala <https://github.com/virajsinh47>",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virajsinh47/layout-inspector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/virajsinh47/layout-inspector/issues"
+  },
+  "homepage": "https://github.com/virajsinh47/layout-inspector#readme",
+  "main": "./dist/element-selector.js",
+  "module": "./dist/element-selector.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/element-selector.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./standalone": {
+      "import": "./dist/element-selector.standalone.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md",
+    "NOTICE.md"
+  ],
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^20.19.25",
+    "@types/react": "^18.0.38",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "vite": "^7.0.6",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && vite build --mode standalone && tsc -p tsconfig.lib.json",
+    "demo:build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prepublishOnly": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "ai-src": "^0.1.0"
+  }
+}

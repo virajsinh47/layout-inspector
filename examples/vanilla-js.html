@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Inspector - Vanilla JS Example</title>
+</head>
+<body>
+  <h1>Layout Inspector</h1>
+  <p>by Virajsinh Zala — click a button to start selecting elements.</p>
+
+  <button id="select-btn">Select Element</button>
+  <button id="select-multiple-btn">Select Multiple Elements</button>
+
+  <div id="result"></div>
+
+  <script type="module">
+    // After `npm run build`, prefer the local bundle:
+    import { launchSelector } from '../dist/element-selector.js';
+
+    document.getElementById('select-btn').addEventListener('click', async () => {
+      try {
+        const element = await launchSelector();
+        document.getElementById('result').innerHTML = `
+          <h3>Selected Element:</h3>
+          <pre>${JSON.stringify({
+            tag: element.tag,
+            id: element.id,
+            classes: element.classes,
+            selector: element.selector
+          }, null, 2)}</pre>
+        `;
+      } catch (error) {
+        console.log('Selection cancelled');
+      }
+    });
+
+    document.getElementById('select-multiple-btn').addEventListener('click', async () => {
+      try {
+        const elements = await launchSelector({
+          multiSelect: true,
+          friendlySelectors: true
+        });
+        document.getElementById('result').innerHTML = `
+          <h3>Selected ${elements.length} Elements:</h3>
+          <pre>${JSON.stringify(elements.map(el => ({
+            tag: el.tag,
+            id: el.id,
+            classes: el.classes,
+            selector: el.selector
+          })), null, 2)}</pre>
+        `;
+      } catch (error) {
+        console.log('Selection cancelled');
+      }
+    });
+  </script>
+</body>
+</html>
